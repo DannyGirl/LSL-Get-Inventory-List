@@ -1,0 +1,20 @@
+default
+{
+    state_entry()
+    {
+        llSetText("Get Inventory List", <0.5, 0.0, 1.0>, 0.9);
+    }
+    touch_start (integer num)
+    {
+       list InvList;
+       integer count = llGetInventoryNumber(INVENTORY_ALL);
+       string Name;
+       while (count--)
+       {
+           Name = llGetInventoryName(INVENTORY_ALL, count);
+           if (Name != llGetScriptName())
+           InvList += (Name + ", ");
+        }
+        llSay(0, (string)InvList);
+    }
+}
